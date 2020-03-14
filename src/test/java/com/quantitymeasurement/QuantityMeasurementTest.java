@@ -7,7 +7,7 @@ import org.junit.Test;
 public class QuantityMeasurementTest {
 
     QuantityMeasurement quantityMeasurement;
-    double inch1,inch2,feet1,feet2;
+    double inch1,inch2,feet1,feet2,feet,inch;
 
     @Before
     public void setUp() throws Exception {
@@ -15,7 +15,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenZeroFeet_WhenEqual_ShouldReturnTrue() {
+    public void givenZeroFeet_WhenEqual_ShouldReturnEqual() {
         feet1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 0);
         feet2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 0);
         Assert.assertEquals(feet1,feet2,0.0);
@@ -36,8 +36,8 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenFeetObject_WhenEqual_ShouldReturnTrue() {
-        QuantityMeasurement feetMeasurement1 = new QuantityMeasurement();
-        Assert.assertEquals(quantityMeasurement,feetMeasurement1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement();
+        Assert.assertEquals(quantityMeasurement,quantityMeasurement1);
     }
 
     @Test
@@ -90,6 +90,37 @@ public class QuantityMeasurementTest {
         inch1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,1.1);
         inch2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 1.1);
         Assert.assertEquals(inch1,inch2,0.0);
+    }
+
+    @Test
+    public void givenFeetInch_WhenBothAreZero_ShouldReturnEqual() {
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET,0.0);
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 0.0);
+        Assert.assertEquals(feet1,inch1,0.0);
+    }
+
+    @Test
+    public void givenOneFeet_WhenNotEqualOneInch_ShouldReturnTrue() {
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET,1);
+        Assert.assertNotEquals(1,inch,0.0);
+    }
+
+    @Test
+    public void givenOneInch_WhenNotEqualOneFeet_ShouldReturnTrue() {
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,1);
+        Assert.assertNotEquals(1,feet,0.0);
+    }
+
+    @Test
+    public void givenOneFeet_WhenEqualTwelveInch_ShouldReturnTrue() {
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET,1);
+        Assert.assertEquals(12,inch,0.0);
+    }
+
+    @Test
+    public void givenTwelveInch_WhenEqualOneFeet_ShouldReturnTrue() {
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,12);
+        Assert.assertEquals(1,feet,0.0);
     }
 
 }
