@@ -15,7 +15,7 @@ public class QuantityMeasurement {
         }
     }
 
-    public double unitConversion(UnitType unitType, double value) {
+    public double lengthConversion(UnitType unitType, double value) {
 
         return value*unitType.getType();
     }
