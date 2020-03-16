@@ -320,7 +320,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneGallon_WhenEqualThreePointSeventyEightLitres_ShouldReturnTrue() {
         gallon = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.GALLON, 1);
-        litre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 3.78);
+        litre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 3.785);
         Assert.assertEquals(litre,gallon,0.0);
     }
 
@@ -329,6 +329,22 @@ public class QuantityMeasurementTest {
         litre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 1);
         millilitre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.MILLILITRE, 1000);
         Assert.assertEquals(millilitre,litre,0.0);
+    }
+
+    @Test
+    public void givenOneGallonAndThreePointSeventyEightLitres_WhenEqualSevenPointFiftySevenLitres_ShouldReturnTrue() {
+        gallon = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.GALLON, 1);
+        litre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 3.785);
+        litre=gallon+litre;
+        Assert.assertEquals(7.57,litre,0.0);
+    }
+
+    @Test
+    public void givenOneLitreAndThousandMillilitre_WhenEqualTwoLitres_ShouldReturnTrue() {
+        litre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 1);
+        millilitre = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.MILLILITRE, 1000);
+        litre=litre+millilitre;
+        Assert.assertEquals(2,litre,0.0);
     }
 
 }
