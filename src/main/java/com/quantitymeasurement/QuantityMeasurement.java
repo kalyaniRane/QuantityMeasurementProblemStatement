@@ -3,7 +3,7 @@ package com.quantitymeasurement;
 public class QuantityMeasurement {
 
     public enum UnitType {
-        FEET(1*12.0), INCH(1.0), YARD(1*36.0);
+        FEET(1*12.0), INCH(1.0), YARD(1*36.0),CENTIMETER(1/2.5);
 
         public Double type;
         UnitType(Double type){
