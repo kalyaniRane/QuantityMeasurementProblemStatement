@@ -7,7 +7,10 @@ import org.junit.Test;
 public class QuantityMeasurementTest {
 
     QuantityMeasurement quantityMeasurement;
-    double inch, length1, length2,feet,yard,centimeter,volume1,volume2,gallon,litre,millilitre,weight1,weight2,kilograms,grams,tonne;
+    double inch, length1, length2,feet,yard,centimeter,
+           volume1,volume2,gallon,litre,millilitre,
+           weight1,weight2,kilograms,grams,tonne,
+           temprature1,temprature2,fahrenheit,celsius;
 
     @Before
     public void setUp() throws Exception {
@@ -217,7 +220,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(true,nullCheck);
     }
 
-    @Test
+   @Test
     public void givenTwoInch_WhenEqualFiveCentimeter_ShouldReturnTrue() {
         inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 2);
         centimeter = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CENTIMETER, 5);
@@ -430,4 +433,55 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(1001,kilograms,0.0);
     }
 
+    //Test case for Temprature Conversion
+
+    @Test
+    public void givenZeroFahrenheit_WhenEqualToZeroFahrenheit_ShouldReturnTrue() {
+        temprature1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEIT, 0);
+        temprature2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEIT, 0);
+        Assert.assertEquals(temprature1,temprature2,0.0);
+    }
+
+    @Test
+    public void givenZeroFahrenheit_WhenNotEqualToOneFahrenheit_ShouldReturnTrue() {
+        temprature1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEIT, 0);
+        temprature2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEIT, 1);
+        Assert.assertNotEquals(temprature1,temprature2,0.0);
+    }
+
+    @Test
+    public void givenFahrenheitNull_WhenNull_ShouldReturnTrue() {
+        boolean nullCheck = quantityMeasurement.equals(null);
+        Assert.assertTrue(nullCheck);
+    }
+
+    @Test
+    public void givenZeroCelsius_WhenEqualToZeroCelsius_ShouldReturnTrue() {
+        temprature1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CELSIUS, 0);
+        temprature2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CELSIUS, 0);
+        Assert.assertEquals(temprature1,temprature2,0.0);
+    }
+
+    @Test
+    public void givenZeroCelsius_WhenNotEqualToOneCelsius_ShouldReturnTrue() {
+        temprature1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CELSIUS, 0);
+        temprature2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CELSIUS, 1);
+        Assert.assertNotEquals(temprature1,temprature2,0.0);
+    }
+
+    @Test
+    public void givenCelsiusNull_WhenNull_ShouldReturnTrue() {
+        boolean nullCheck = quantityMeasurement.equals(null);
+        Assert.assertTrue(nullCheck);
+    }
+
+    @Test
+    public void givenTemperatureInFahrenheit_ShouldReturnTemperatureInCelsius() {
+        fahrenheit = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEIT, 212);
+        celsius = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CELSIUS,100);
+        Assert.assertEquals(celsius,fahrenheit,0.0);
+    }
+
 }
+
+
