@@ -7,7 +7,7 @@ import org.junit.Test;
 public class QuantityMeasurementTest {
 
     QuantityMeasurement quantityMeasurement;
-    double inch1,inch2,feet1,feet2,feet,inch;
+    double inch1,inch2,feet1,feet2,feet,inch,yard;
 
     @Before
     public void setUp() throws Exception {
@@ -107,8 +107,9 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenOneInch_WhenNotEqualOneFeet_ShouldReturnTrue() {
-        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,1);
-        Assert.assertNotEquals(1,feet,0.0);
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,1);
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 1);
+        Assert.assertNotEquals(feet,inch,0.0);
     }
 
     @Test
@@ -119,8 +120,51 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTwelveInch_WhenEqualOneFeet_ShouldReturnTrue() {
-        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,12);
-        Assert.assertEquals(1,feet,0.0);
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,12);
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 1);
+        Assert.assertEquals(inch,feet,0.0);
+    }
+
+    @Test
+    public void givenFeet_WhenEqualThreeFeet_ShouldReturnTrue() {
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET,3);
+         yard = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD, 1);
+        Assert.assertEquals(feet,yard,0.0);
+    }
+
+   @Test
+    public void givenThreeFeet_WhenEqualOneYard_ShouldReturnTrue() {
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 3);
+        yard=quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD,1);
+        Assert.assertEquals(yard,feet,0.0);
+    }
+
+    @Test
+    public void givenOneFeet_WhenNotEqualToOneYard_ShouldReturnTrue() {
+        feet = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEET, 1);
+        yard = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD, 1);
+        Assert.assertNotEquals(yard,feet,0.0);
+    }
+
+    @Test
+    public void givenOneInch_WhenNotEqualOneYard_ShouldReturnTrue() {
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 1);
+        yard = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD, 1);
+        Assert.assertNotEquals(inch,yard,0.0);
+    }
+
+    @Test
+    public void givenOneYard_WhenEqualThirtySixInch_ShouldReturnTrue() {
+        yard = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD, 1);
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 36);
+        Assert.assertEquals(inch,yard,0.0);
+    }
+
+    @Test
+    public void givenThirtySixInch_WhenEqualOneYard_ShouldReturnTrue() {
+        yard = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.YARD, 1);
+        inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 36);
+        Assert.assertEquals(inch,yard,0.0);
     }
 
 }
