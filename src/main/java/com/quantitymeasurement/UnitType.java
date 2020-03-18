@@ -6,11 +6,12 @@ public enum UnitType {
     FAHRENHEIT(1.0), CELSIUS(9/5.0);
 
     public Double type;
-    UnitType(Double type){
+    UnitType(Double type) {
         this.type=type;
     }
 
-    double getType(){
+    double getType() {
         return type;
     }
 }
+
