@@ -1,9 +1,9 @@
 package com.quantitymeasurement;
 
 @FunctionalInterface
-public interface IQuantityMeasurement {
+public interface QuantityMeasurementInterface {
 
-    double unitConversion(UnitType unitType, double value);
+    double unitConversion(UnitType unitType, double quantity);
 
     default double addition(double quantity1, double quantity2) {
         return quantity1+quantity2;

@@ -1,19 +1,16 @@
 package com.quantitymeasurement;
 
 
-public class QuantityMeasurement implements IQuantityMeasurement {
-
-    public double value;
+public class QuantityMeasurement implements QuantityMeasurementInterface {
 
     @Override
-    public double unitConversion(UnitType unitType, double value) {
+    public double unitConversion(UnitType unitType, double quantity) {
 
         if(unitType==UnitType.CELSIUS) {
-            return value*unitType.getType()+32;
+            return quantity *unitType.getType()+32;
         }
-        return value*unitType.getType();
+        return quantity *unitType.getType();
     }
-
 
     @Override
     public boolean equals(Object unitObject) {
@@ -23,12 +20,7 @@ public class QuantityMeasurement implements IQuantityMeasurement {
             return false;
         if(this.getClass() == unitObject.getClass())
             return true;
-        QuantityMeasurement that = (QuantityMeasurement) unitObject;
-        return this.compare(that.value, value);
+        return false;
     }
 
-
-    public boolean compare(double value1, double value2) {
-        return Double.compare(value1,value2)==0;
-    }
 }

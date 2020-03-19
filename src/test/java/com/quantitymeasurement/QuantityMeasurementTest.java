@@ -7,7 +7,7 @@ import org.junit.Test;
 public class QuantityMeasurementTest {
 
     QuantityMeasurement quantityMeasurement;
-    double length1, length2, volume1, volume2, weight1, weight2, temprature1, temprature2;
+    double length1, length2, volume1, volume2, weight1, weight2, temperature1, temperature2,result;
 
     @Before
     public void setUp() {
@@ -15,7 +15,6 @@ public class QuantityMeasurementTest {
     }
 
     // Test Cases for Feet to Inch Conversion
-
     @Test
     public void givenZeroFeet_WhenEqualZeroFeet_ShouldReturnEqual() {
         length1 = quantityMeasurement.unitConversion(UnitType.FEET, 0);
@@ -56,7 +55,6 @@ public class QuantityMeasurementTest {
     }
 
     //Test Case For Inch To Feet Conversion
-
     @Test
     public void givenZeroInch_WhenEqualToZeroInch_ShouldReturnTrue() {
         length1 = quantityMeasurement.unitConversion(UnitType.INCH, 0);
@@ -132,7 +130,6 @@ public class QuantityMeasurementTest {
     }
 
     // Test Cases for Feet To Yard , Yard To Inch Conversion
-
     @Test
     public void givenZeroYard_WhenEqualZeroYard_ShouldReturnEqual() {
         length1 = quantityMeasurement.unitConversion(UnitType.YARD, 0);
@@ -196,7 +193,6 @@ public class QuantityMeasurementTest {
     }
 
     //Test Case For Inch To Centimeter Conversion
-
     @Test
     public void givenZeroCentimeter_WhenEqualToZeroCentimeter_ShouldReturnEqual() {
         length1 = quantityMeasurement.unitConversion(UnitType.CENTIMETER, 0);
@@ -228,36 +224,35 @@ public class QuantityMeasurementTest {
     public void givenTwoInchAndTwoInch_WhenEqualFourInches_ShouldReturnTrue() {
         length1 = quantityMeasurement.unitConversion(UnitType.INCH, 2);
         length2 = quantityMeasurement.unitConversion(UnitType.INCH, 2);
-        double resultOfAddition = quantityMeasurement.addition(length1, length2);
-        Assert.assertEquals(4,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(length1, length2);
+        Assert.assertEquals(4,result,0.0);
     }
 
     @Test
     public void givenOneFeetAndTwoInch_WhenEqualFourteenInches_ShouldReturnTrue() {
         length1 = quantityMeasurement.unitConversion(UnitType.FEET, 1);
         length2 = quantityMeasurement.unitConversion(UnitType.INCH, 2);
-        double resultOfAddition = quantityMeasurement.addition(length1, length2);
-        Assert.assertEquals(14,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(length1, length2);
+        Assert.assertEquals(14,result,0.0);
     }
 
     @Test
     public void givenOneFeetAndOneFeet_WhenEqualTwentyFourInches_ShouldReturnTrue() {
         length1 = quantityMeasurement.unitConversion(UnitType.FEET, 1);
         length2 = quantityMeasurement.unitConversion(UnitType.FEET, 1);
-        double resultOfAddition = quantityMeasurement.addition(length1, length2);
-        Assert.assertEquals(24,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(length1, length2);
+        Assert.assertEquals(24,result,0.0);
     }
 
     @Test
     public void givenTwoInchAndTwoAndHalfCentimeter_WhenEqualThreeInches_ShouldReturnTrue() {
         length1 = quantityMeasurement.unitConversion(UnitType.INCH, 2);
         length2 = quantityMeasurement.unitConversion(UnitType.CENTIMETER, 2.5);
-        double resultOfAddition = quantityMeasurement.addition(length1, length2);
-        Assert.assertEquals(3,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(length1, length2);
+        Assert.assertEquals(3,result,0.0);
     }
 
     //Test Cases For Gallon To Litre And Liter To Millilitre Conversion
-
     @Test
     public void givenZeroGallon_WhenEqualToZeroGallon_ShouldReturnEqual() {
         volume1 = quantityMeasurement.unitConversion(UnitType.GALLON, 0);
@@ -336,16 +331,16 @@ public class QuantityMeasurementTest {
     public void givenOneGallonAndThreePointSeventyEightLitres_WhenEqualSevenPointFiftySevenLitres_ShouldReturnTrue() {
         volume1 = quantityMeasurement.unitConversion(UnitType.GALLON, 1);
         volume2 = quantityMeasurement.unitConversion(UnitType.LITRE, 3.785);
-        double resultOfAddition = quantityMeasurement.addition(volume1, volume2);
-        Assert.assertEquals(7.57,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(volume1, volume2);
+        Assert.assertEquals(7.57,result,0.0);
     }
 
     @Test
     public void givenOneLitreAndThousandMillilitre_WhenEqualTwoLitres_ShouldReturnTrue() {
         volume1 = quantityMeasurement.unitConversion(UnitType.LITRE, 1);
         volume2 = quantityMeasurement.unitConversion(UnitType.MILLILITRE, 1000);
-        double resultOfAddition = quantityMeasurement.addition(volume1, volume2);
-        Assert.assertEquals(2,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(volume1, volume2);
+        Assert.assertEquals(2,result,0.0);
     }
 
     @Test
@@ -426,24 +421,23 @@ public class QuantityMeasurementTest {
     public void givenOneTonneAndThousandGrams_WhenEqualToThousandAndOneKilograms_ShouldReturnTrue() {
         weight1 = quantityMeasurement.unitConversion(UnitType.TONNE, 1);
         weight2 = quantityMeasurement.unitConversion(UnitType.GRAMS, 1000.0);
-        double resultOfAddition = quantityMeasurement.addition(weight1, weight2);
-        Assert.assertEquals(1001,resultOfAddition,0.0);
+        result = quantityMeasurement.addition(weight1, weight2);
+        Assert.assertEquals(1001,result,0.0);
     }
 
     //Test case for Temprature Conversion
-
     @Test
     public void givenZeroFahrenheit_WhenEqualToZeroFahrenheit_ShouldReturnTrue() {
-        temprature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
-        temprature2 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
-        Assert.assertEquals(temprature1,temprature2,0.0);
+        temperature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
+        temperature2 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
+        Assert.assertEquals(temperature1, temperature2,0.0);
     }
 
     @Test
     public void givenZeroFahrenheit_WhenNotEqualToOneFahrenheit_ShouldReturnTrue() {
-        temprature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
-        temprature2 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 1);
-        Assert.assertNotEquals(temprature1,temprature2,0.0);
+        temperature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 0);
+        temperature2 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 1);
+        Assert.assertNotEquals(temperature1, temperature2,0.0);
     }
 
     @Test
@@ -454,16 +448,16 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenZeroCelsius_WhenEqualToZeroCelsius_ShouldReturnTrue() {
-        temprature1 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
-        temprature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
-        Assert.assertEquals(temprature1,temprature2,0.0);
+        temperature1 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
+        temperature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
+        Assert.assertEquals(temperature1, temperature2,0.0);
     }
 
     @Test
     public void givenZeroCelsius_WhenNotEqualToOneCelsius_ShouldReturnTrue() {
-        temprature1 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
-        temprature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 1);
-        Assert.assertNotEquals(temprature1,temprature2,0.0);
+        temperature1 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 0);
+        temperature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS, 1);
+        Assert.assertNotEquals(temperature1, temperature2,0.0);
     }
 
     @Test
@@ -474,9 +468,9 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenTemperatureInFahrenheit_ShouldReturnTemperatureInCelsius() {
-        temprature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 212);
-        temprature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS,100);
-        Assert.assertEquals(temprature1,temprature2,0.0);
+        temperature1 = quantityMeasurement.unitConversion(UnitType.FAHRENHEIT, 212);
+        temperature2 = quantityMeasurement.unitConversion(UnitType.CELSIUS,100);
+        Assert.assertEquals(temperature1, temperature2,0.0);
     }
 
 }
